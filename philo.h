@@ -8,4 +8,34 @@
 # include <sys/time.h>
 # include <limits.h>
 
+typedef struct s_philo
+{
+	int				id;
+	long			meals_eaten;
+	long			last_meal;
+	pthread_t		thread;
+	pthread_mutex_t	*left_fork;
+	pthread_mutex_t	*right_fork;
+	pthread_mutex_t	philo_lock;
+	t_data			*data;
+}	t_philo;
+
+struct s_data
+{
+	int				nb_philo;
+	long			time_to_die;
+	long			time_to_eat;
+	long			time_to_sleep;
+	int				must_eat;
+	int				dead;
+	long			start_time;
+	pthread_mutex_t	*forks;
+	pthread_mutex_t	print_lock;
+	pthread_mutex_t	dead_lock;
+	t_philo			*philos;
+};
+
+int		parse_args(int argc, char **argv, t_data *data);
+int		ft_atoi_philo(const char *str, int *error);
+
 #endif
