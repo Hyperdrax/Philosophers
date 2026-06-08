@@ -37,5 +37,6 @@ struct s_data
 
 int		parse_args(int argc, char **argv, t_data *data);
 int		ft_atoi_philo(const char *str, int *error);
+int		init_data(t_data *data);
 
 #endif

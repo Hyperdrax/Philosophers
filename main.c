@@ -9,5 +9,7 @@ int	main(int argc, char **argv)
 				"time_to_eat time_to_sleep [nb_meals]\n"));
 	if (parse_args(argc, argv, &data))
 		return (1);
+	if (init_data(&data))
+		return (1);
 	return (0);
 }
