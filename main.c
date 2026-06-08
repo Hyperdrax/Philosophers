@@ -11,5 +11,10 @@ int	main(int argc, char **argv)
 		return (1);
 	if (init_data(&data))
 		return (1);
+	if (init_philos(&data))
+	{
+		destroy_all(&data, data.nb_philo);
+		return (1);
+	}
 	return (0);
 }

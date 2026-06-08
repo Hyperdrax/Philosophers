@@ -38,5 +38,10 @@ struct s_data
 int		parse_args(int argc, char **argv, t_data *data);
 int		ft_atoi_philo(const char *str, int *error);
 int		init_data(t_data *data);
+int		init_philos(t_data *data);
+long	get_time(void);
+void	ft_usleep(long ms, t_data *data);
+void	destroy_all(t_data *data, int forks_count);
+int		error_msg(char *msg);
 
 #endif
