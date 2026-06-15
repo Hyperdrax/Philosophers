@@ -5,8 +5,11 @@ CFLAGS		= -Wall -Wextra -Werror -pthread
 
 SRCS		= main.c \
 			  parsing.c \
-			  utlis.c \ 
-			  init.c \ 
+			  init.c \
+			  utils.c \
+			  routine.c \
+			  monitor.c \
+			  print.c \
 			  clean.c
 
 OBJS		= $(SRCS:.c=.o)

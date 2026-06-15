@@ -8,6 +8,17 @@
 # include <sys/time.h>
 # include <limits.h>
 
+typedef struct s_data	t_data;
+
+typedef enum e_state
+{
+	TAKE_FORK,
+	EATING,
+	SLEEPING,
+	THINKING,
+	DIED
+}	t_state;
+
 typedef struct s_philo
 {
 	int				id;
@@ -36,11 +47,15 @@ struct s_data
 };
 
 int		parse_args(int argc, char **argv, t_data *data);
-int		ft_atoi_philo(const char *str, int *error);
 int		init_data(t_data *data);
 int		init_philos(t_data *data);
 long	get_time(void);
 void	ft_usleep(long ms, t_data *data);
+int		ft_atoi_philo(const char *str, int *error);
+void	*routine(void *arg);
+int		is_dead(t_data *data);
+void	*monitor(void *arg);
+void	print_status(t_philo *philo, t_state state);
 void	destroy_all(t_data *data, int forks_count);
 int		error_msg(char *msg);
 
