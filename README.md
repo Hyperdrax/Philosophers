@@ -26,9 +26,8 @@ In this implementation, **each philosopher is a thread** and **each fork is a mu
 
 ### Compilation
 
-From the root of the repository:
-
 ```bash
+cd philo
 make
 ```
 

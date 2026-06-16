@@ -30,11 +30,14 @@ void	destroy_all(t_data *data, int forks_count)
 		pthread_mutex_destroy(&data->forks[i]);
 		i++;
 	}
-	i = 0;
-	while (i < data->nb_philo)
+	if (data->philos)
 	{
-		pthread_mutex_destroy(&data->philos[i].philo_lock);
-		i++;
+		i = 0;
+		while (i < data->nb_philo)
+		{
+			pthread_mutex_destroy(&data->philos[i].philo_lock);
+			i++;
+		}
 	}
 	pthread_mutex_destroy(&data->print_lock);
 	pthread_mutex_destroy(&data->dead_lock);
