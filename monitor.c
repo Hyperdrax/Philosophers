@@ -6,12 +6,13 @@
 /*   By: flhensel <flhensel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/16 16:08:24 by flhensel          #+#    #+#             */
-/*   Updated: 2026/06/16 16:09:58 by flhensel         ###   ########.fr       */
+/*   Updated: 2026/06/16 18:35:58 by flhensel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
+/* Always read data->dead through this function so the lock is never skipped. */
 int	is_dead(t_data *data)
 {
 	int	dead;
@@ -29,6 +30,8 @@ static void	set_dead(t_data *data)
 	pthread_mutex_unlock(&data->dead_lock);
 }
 
+/* philo_lock is held while reading last_meal to avoid a race with the
+   philosopher thread that writes last_meal inside eat(). */
 static int	check_starvation(t_data *data, int i)
 {
 	long	time_since_meal;
@@ -71,6 +74,7 @@ static int	all_ate_enough(t_data *data)
 	return (0);
 }
 
+/* Sweeps every philosopher every 0.5 ms to detect death or full satiation. */
 void	*monitor(void *arg)
 {
 	t_data	*data;

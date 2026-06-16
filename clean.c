@@ -6,7 +6,7 @@
 /*   By: flhensel <flhensel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/16 16:07:56 by flhensel          #+#    #+#             */
-/*   Updated: 2026/06/16 16:09:51 by flhensel         ###   ########.fr       */
+/*   Updated: 2026/06/16 18:35:48 by flhensel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ int	error_msg(char *msg)
 	return (1);
 }
 
+/* forks_count may be less than nb_philo when init_mutexes failed mid-way,
+   so only the successfully initialised mutexes are destroyed. */
 void	destroy_all(t_data *data, int forks_count)
 {
 	int	i;

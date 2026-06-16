@@ -6,12 +6,14 @@
 /*   By: flhensel <flhensel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/16 16:08:17 by flhensel          #+#    #+#             */
-/*   Updated: 2026/06/16 16:08:19 by flhensel         ###   ########.fr       */
+/*   Updated: 2026/06/16 18:35:56 by flhensel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
+/* last_meal is set before thread creation so the death clock starts
+   at simulation start, not at an uninitialised value. */
 static int	start_threads(t_data *data)
 {
 	int			i;

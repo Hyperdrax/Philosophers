@@ -6,7 +6,7 @@
 /*   By: flhensel <flhensel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/16 16:08:33 by flhensel          #+#    #+#             */
-/*   Updated: 2026/06/16 16:08:36 by flhensel         ###   ########.fr       */
+/*   Updated: 2026/06/16 18:36:01 by flhensel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ static int	check_values(t_data *data, int argc)
 	return (0);
 }
 
+/* must_eat is set to -1 when the optional 5th argument is omitted,
+   signalling the monitor that there is no meal-count stop condition. */
 int	parse_args(int argc, char **argv, t_data *data)
 {
 	int	error;

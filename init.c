@@ -6,7 +6,7 @@
 /*   By: flhensel <flhensel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/16 16:08:06 by flhensel          #+#    #+#             */
-/*   Updated: 2026/06/16 16:08:09 by flhensel         ###   ########.fr       */
+/*   Updated: 2026/06/16 18:35:50 by flhensel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,10 @@ int	init_data(t_data *data)
 	return (0);
 }
 
+/* Philosopher i owns fork[i] on the left and fork[i+1] on the right.
+   The modulo wraps the last philosopher's right fork back to fork[0],
+   closing the circle. With 1 philosopher both pointers share the same
+   fork so they can never acquire a second one and must starve. */
 static void	assign_forks(t_data *data, int i)
 {
 	if (data->nb_philo == 1)

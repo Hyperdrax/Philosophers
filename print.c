@@ -6,12 +6,14 @@
 /*   By: flhensel <flhensel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/16 16:08:57 by flhensel          #+#    #+#             */
-/*   Updated: 2026/06/16 16:09:00 by flhensel         ###   ########.fr       */
+/*   Updated: 2026/06/16 18:36:04 by flhensel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
+/* The is_dead check inside the lock prevents any state message from
+   slipping in between the DIED print and the dead flag being set. */
 void	print_status(t_philo *philo, t_state state)
 {
 	long	timestamp;

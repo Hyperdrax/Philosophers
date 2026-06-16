@@ -6,12 +6,14 @@
 /*   By: flhensel <flhensel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/16 16:09:15 by flhensel          #+#    #+#             */
-/*   Updated: 2026/06/16 16:09:18 by flhensel         ###   ########.fr       */
+/*   Updated: 2026/06/16 18:36:10 by flhensel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
+/* Returns current wall-clock time in milliseconds.
+   1000L forces long arithmetic to prevent overflow on tv_sec (~1.7 billion). */
 long	get_time(void)
 {
 	struct timeval	tv;
@@ -20,6 +22,9 @@ long	get_time(void)
 	return ((tv.tv_sec * 1000L) + (tv.tv_usec / 1000));
 }
 
+/* Busy-waits in 200 µs steps instead of one big usleep() because usleep
+   can oversleep by several ms, which would break the <10 ms death accuracy.
+   Exits early when the simulation ends so threads don't stay blocked. */
 void	ft_usleep(long ms, t_data *data)
 {
 	long	start;
@@ -53,6 +58,8 @@ static int	skip_sign(const char *str, int *i, int *sign)
 	return (0);
 }
 
+/* Sets *error on overflow, trailing non-digits, or an empty string.
+   Accumulates into long so the overflow check itself does not overflow. */
 int	ft_atoi_philo(const char *str, int *error)
 {
 	long	res;
